@@ -58,7 +58,7 @@ workflows:
         environment:
           ios_signing:
             distribution_type: app_store
-            bundle_identifier: io.codemagic.sample.reactnative
+            bundle_identifier: com.netapp.netappemployeeapp.stg
           vars:
             XCODE_WORKSPACE: "AwesomeProject.xcworkspace" # <-- Put the name of your Xcode workspace here
             XCODE_SCHEME: "AwesomeProject" # <-- Put the name of your Xcode scheme here
