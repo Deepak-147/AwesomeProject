@@ -57,7 +57,7 @@ workflows:
           app_store_connect: codemagic
         environment:
           ios_signing:
-            distribution_type: development
+            distribution_type: enterprise
             bundle_identifier: com.netapp.netappemployeeapp.stg
           vars:
             XCODE_WORKSPACE: "AwesomeProject.xcworkspace" # <-- Put the name of your Xcode workspace here
