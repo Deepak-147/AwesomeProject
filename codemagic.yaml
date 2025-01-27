@@ -5,7 +5,7 @@ workflows:
     react-native-android:
         name: React Native Android
         scripts:
-            - echo "Hello World!"
+          - echo "Building Android app..."
         max_build_duration: 120
         instance_type: mac_mini_m2
         environment:
@@ -36,8 +36,15 @@ workflows:
                 ./gradlew bundleRelease \
                   -PversionCode=$UPDATED_BUILD_NUMBER \
                   -PversionName=1.0.$UPDATED_BUILD_NUMBER
+            - name: Build APK
+              script: |
+                cd android
+                ./gradlew assembleRelease \
+                  -PversionCode=$UPDATED_BUILD_NUMBER \
+                  -PversionName=1.0.$UPDATED_BUILD_NUMBER
         artifacts:
             - android/app/build/outputs/**/*.aab
+            - android/app/build/outputs/**/*.apk
         publishing:
           email:
             recipients:
@@ -51,6 +58,8 @@ workflows:
           #   track: alpha   # Any default or custom track that is not in ‘draft’ status
     react-native-ios:
         name: React Native iOS
+        scripts:
+          - echo "Building iOS app..."
         max_build_duration: 120
         instance_type: mac_mini_m2
         # integrations:
